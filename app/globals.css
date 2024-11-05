@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.font-title {
+    font-family: var(--font-kablammo);
+}
+
+.font-text {
+    font-family: var(--font-caveat);
+}
