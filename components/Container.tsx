@@ -1,12 +1,26 @@
 "use client"
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Image from 'next/image'
 import CountdownTimer from './children/CountdownTimer';
+import { IoVolumeHigh, IoVolumeMute } from 'react-icons/io5';
 
 gsap.registerPlugin(ScrollTrigger)
 const Container = () => {
+    const [active, setActive] = useState(true);
+    const audioRef = useRef<any>(null);
+
+    useEffect(() => {
+        const audio = audioRef.current;
+
+        if (active) {
+            audio?.play();
+        } else {
+            audio?.pause();
+        }
+    }, [active]);
+
     useEffect(() => {
         gsap.from('.teddy', {
             opacity: 0,
@@ -21,6 +35,7 @@ const Container = () => {
                 toggleActions: 'play none none reverse',
             },
         });
+
         gsap.utils.toArray('.main-title').forEach((element: any) => {
             gsap.from(element, {
                 opacity: 0,
@@ -122,6 +137,25 @@ const Container = () => {
                     <h2 className='text-2xl text-end font-bold mb-5 text-[#f7775e] main-title'>Приглашение <br /> на День Рождения</h2>
                     <h1 className='text-7xl font-title font-bold text-center text-pink-600 main-title'>Ариана</h1>
                 </div>
+
+            </div>
+            <div
+                className="mt-auto w-40 mx-auto my-10 flex flex-col items-center py-4 border-y-2 border-[#dc663b]"
+            >
+                <button
+                    className="mb-2"
+                    onClick={() => {
+                        setActive(!active);
+                    }}
+                >
+                    {active ? (
+                        <IoVolumeHigh size={35} color={"#f7775e"} />
+                    ) : (
+                        <IoVolumeMute size={35} color={"#f7775e"} />
+                    )}
+                </button>
+                <audio ref={audioRef} loop autoPlay={true} src="/music/happy-birthday.m4a"></audio>
+                <p className="text-xs text-center text-[#f7775e] text-element">Если Вас отвлекает музыка, ее можно выключить</p>
             </div>
             <div className="">
                 <h2 className='text-4xl font-bold font-title text-center text-orange-600 main-title'>Дорогие гости!</h2>
