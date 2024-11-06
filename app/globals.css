@@ -9,3 +9,95 @@
 .font-text {
     font-family: var(--font-caveat);
 }
+
+.key {
+    animation: key-animation 7s linear infinite alternate;
+}
+
+@keyframes key-animation {
+    0% {
+        transform: translateX(-20px);
+    }
+
+    50% {
+        transform: translateX(20px);
+    }
+
+    100% {
+        transform: translateX(-20px);
+    }
+}
+
+.lock {
+    animation: lock-animation 5s linear infinite alternate;
+}
+
+@keyframes lock-animation {
+    0% {
+        transform: translateY(-10px);
+    }
+
+    50% {
+        transform: translateY(10px);
+    }
+
+    100% {
+        transform: translateY(-10px);
+    }
+}
+
+.cups {
+    animation: cups-animation 5s linear infinite alternate;
+}
+
+@keyframes cups-animation {
+    0% {
+        transform: rotate(5deg);
+    }
+
+    50% {
+        transform: rotate(-5deg);
+    }
+
+    100% {
+        transform: rotate(5deg);
+    }
+}
+
+.clock {
+    animation: clock-animation 6s linear infinite alternate;
+}
+
+@keyframes clock-animation {
+    0% {
+        transform: translateY(-10px);
+    }
+
+    50% {
+        transform: translateY(10px);
+
+    }
+
+    100% {
+        transform: translateY(-10px);
+    }
+}
+
+.kettle {
+    animation: kettle-animation 6s linear infinite alternate;
+}
+
+@keyframes kettle-animation {
+    0% {
+        transform: rotate(10deg);
+    }
+
+    50% {
+        transform: rotate(-10deg);
+
+    }
+
+    100% {
+        transform: rotate(10deg);
+    }
+}

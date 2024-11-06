@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
-import { Inter, Roboto_Mono, Kablammo, Caveat } from 'next/font/google'
+import { Kablammo, Caveat } from 'next/font/google'
 import "./globals.css";
-import Image from "next/image";
 
 const kablammo = Kablammo({
     subsets: ['latin'],
@@ -26,21 +25,14 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en">
+        <html lang="ru">
             <body
-                className={`${kablammo.variable} ${caveat.variable} antialiased  relative`}
+                className={`${kablammo.variable} ${caveat.variable} antialiased`}
+                style={{ background: "#fff" }}
             >
-                <div className="fixed -z-40 top-0 left-0 h-screen w-full">
-                    <Image
-                        className="w-full h-full object-cover"
-                        src={"/images/bg.png"}
-                        width={1000}
-                        height={1000}
-                        alt="bg"
-                    />
-                </div>
-                {children}
-                
+                <main>
+                    {children}
+                </main>
             </body>
         </html>
     );

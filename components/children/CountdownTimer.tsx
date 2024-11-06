@@ -1,23 +1,24 @@
 "use client"
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
 import { useState, useEffect } from "react";
-interface CounterProps { }
 
-const Counter: React.FC<CounterProps> = () => {
+gsap.registerPlugin(ScrollTrigger)
+const Counter = () => {
     const [stop, setStop] = useState(false);
     const [days, setDays] = useState(0);
     const [hours, setHours] = useState(0);
     const [minutes, setMinutes] = useState(0);
     const [seconds, setSeconds] = useState(0);
 
-    // Total time values for percentage calculations
     const totalSeconds = 60;
     const totalMinutes = 60;
     const totalHours = 24;
-    const totalDays = 365; // Adjust according to your use case
+    const totalDays = 365;
 
     useEffect(() => {
-        const date = new Date("11/10/2024 15:00:00");
+        const date = new Date("11/11/2024 15:00:00");
 
         const interval = setInterval(() => {
             const now = new Date();
@@ -57,21 +58,39 @@ const Counter: React.FC<CounterProps> = () => {
         { value: seconds, label: "Секунд", total: totalSeconds },
     ];
 
+    useEffect(() => {
+        gsap.utils.toArray('.times').forEach((element: any) => {
+            gsap.from(element, {
+                opacity: 0,
+                y: -50,
+                duration: 1.5,
+                ease: 'power3.out',
+                stagger: 0.2,
+                scrollTrigger: {
+                    trigger: element,
+                    start: 'top 80%',
+                    end: 'bottom 60%',
+                    toggleActions: 'play none none reverse',
+                },
+            });
+        })
+    }, [])
+
     return (
         <div className="relative pb-48 pt-5 z-10">
             <div className="">
-                <p className="text-4xl text-center font-bold font-text text-[#f7775e]">Мне исполнится 1 год <br /> через...</p>
+                <p className="text-4xl text-center font-bold font-text text-[#f7775e] times">Мне исполнится 1 год <br /> через...</p>
             </div>
 
             <div className="flex justify-center gap-4 px-5 py-10 text-orange-600">
                 {blocks.map(({ value, label, total }, index) => {
                     const percentage = getProgressPercentage(value, total);
-                    const strokeDashoffset = 440 - (440 * percentage) / 100; // Circle circumference = 440
+                    const strokeDashoffset = 440 - (440 * percentage) / 100;
 
                     return (
                         <div
                             key={index}
-                            className="relative flex flex-col items-center justify-center w-20 h-20"
+                            className="relative flex flex-col items-center justify-center w-20 h-20 times"
                         >
                             <svg
                                 className="absolute -z-10 w-full h-full transform rotate-90"
@@ -111,19 +130,18 @@ const Counter: React.FC<CounterProps> = () => {
                         <div
                             className="text-[#f7775e] text-center font-text"
                         >
-                            <h1 className="text-3xl font-bold mb-4">
+                            <h2 className="text-3xl font-bold mb-4">
                                 Ожидание окончено!
-                            </h1>
+                            </h2>
                             <p className="">
                                 Спасибо, что разделили этот момент с нами. Давайте сделаем этот день незабываемым!
                             </p>
                         </div>
                     </div>
-
                 )}
             </div>
 
-            <div className="w-60 absolute -z-20 -top-5 -left-10 select-none pointer-events-none">
+            <div className="w-60 absolute -z-20 -top-5 -left-10 select-none pointer-events-none clock">
                 <Image
                     className='w-full h-full object-cover object-top'
                     src={"/images/clock.png"}
@@ -135,14 +153,14 @@ const Counter: React.FC<CounterProps> = () => {
 
             <div className="w-[400px] absolute -z-20 -bottom-24 -left-20 select-none pointer-events-none">
                 <Image
-                    className='w-full h-full object-cover object-top'
+                    className='w-full h-full object-cover object-top key'
                     src={"/images/key.png"}
                     width={1000}
                     height={1000}
                     alt='childe'
                 />
             </div>
-            <div className="w-[400px] absolute -z-20 -bottom-20 -left-20 select-none pointer-events-none">
+            <div className="w-[400px] absolute -z-20 -bottom-20 -left-10 select-none pointer-events-none lock">
                 <Image
                     className='w-full h-full object-cover object-top'
                     src={"/images/lock.png"}
@@ -151,7 +169,7 @@ const Counter: React.FC<CounterProps> = () => {
                     alt='childe'
                 />
             </div>
-            <div className="w-72 absolute -z-20 -bottom-10 -right-20 select-none pointer-events-none">
+            <div className="w-72 absolute -z-20 -bottom-10 -right-20 select-none pointer-events-none cups">
                 <Image
                     className='w-full h-full object-cover object-top'
                     src={"/images/cups.png"}
