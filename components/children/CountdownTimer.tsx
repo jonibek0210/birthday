@@ -52,7 +52,7 @@ const Counter = () => {
     };
 
     const blocks = [
-        { value: days, label: "Дней", total: totalDays },
+        { value: days, label: "Дня", total: totalDays },
         { value: hours, label: "Часов", total: totalHours },
         { value: minutes, label: "Минут", total: totalMinutes },
         { value: seconds, label: "Секунд", total: totalSeconds },
