@@ -135,9 +135,8 @@ const Container = () => {
                 </div>
                 <div className="w-full absolute z-10 top-52 right-0 px-10">
                     <h2 className='text-2xl text-end font-bold mb-5 text-[#f7775e] main-title'>Приглашение <br /> на День Рождения</h2>
-                    <h1 className='text-7xl font-title font-bold text-center text-pink-600 main-title'>Ариана</h1>
+                    <h1 className='text-7xl font-title font-bold text-center text-pink-600 main-title'>Арианы</h1>
                 </div>
-
             </div>
             <div
                 className="mt-auto w-40 mx-auto my-10 flex flex-col items-center py-4 border-y-2 border-[#dc663b]"
@@ -161,7 +160,7 @@ const Container = () => {
                 <h2 className='text-4xl font-bold font-title text-center text-orange-600 main-title'>Дорогие гости!</h2>
                 <p className='mt-5 text-2xl text-center font-text mx-5 text-[#f7775e] text-element'>Один из дней в этом году станет для нас особенным и мы хотим провести его вместе с Вами!
                     С превеликим удовольствием приглашаем Вас на первый День Рождения нашей малышки Арианы! Будем счастливы видеть  Вас на нашем торжестве, которое состоится в понедельник 11.11.2024 г. в 18:00 в ресторане "Шохсарой" по адресу: г. Самарканд, ул. Аль Хоразмий, дом 250Д, ориентир Школа N "51". </p>
-                <p className='mt-5 text-2xl text-center font-text mx-5 text-[#f7775e] text-element'>Будет много веселья, <br /> сладостей и пиццы!</p>
+                <p className='mt-5 text-2xl text-center font-text mx-5 text-[#f7775e] text-element'>Будет много веселья, <br /> сладостей и угощения!</p>
                 <p className='mt-5 text-2xl text-center font-text mx-5 text-[#f7775e] text-element'>С уважением семьи Ким.</p>
                 <p className='mt-10 text-6xl font-title font-black text-center text-orange-600 main-title'>11.11.24</p>
                 <p className='mt-10 text-2xl text-center font-text mx-5 text-[#f7775e] text-element'>ЖДУ ВАС В 18:00</p>
